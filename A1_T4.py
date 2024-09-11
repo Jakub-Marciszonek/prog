@@ -1,15 +1,15 @@
 Num1= int(47)
 Num2= int(102)
 
-Sum= int(Num1+Num2)
-Diff= int(Num2-Num1)
-Product= int(Sum*Diff)
+Sum= Num1+Num2
+Diff= Num2-Num1
+Product= Sum*Diff
 
-def main():
+def mian()
 
-    print(Num1, "+", Num2, "=", Sum)
-    print(Num2, "-", Num1, "=", Diff)
-    print(Sum, "*", Diff, "=", Product)
-    print("(", Num1, "+", Num2, ") * (", Num2, "-", Num1, ") =", Product)
+    print(f"{Num1} + {Num2} = {Sum}")
+    print(f"{Num2} - {Num1} = {Diff}")
+    print(f"{Sum} * {Diff} = {Product}")
+    print(f"({Num1} + {Num2}) * ({Num2} - {Num1}) = {Product} ")
     return None
 main()
