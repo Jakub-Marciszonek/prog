@@ -8,5 +8,10 @@ def main():
     Consumption = int((FuelUsage / Distnance) * 100)
 
     print("Fuel consumption is", Consumption, "l per 100 km")
+# zeby skomentowac pare linijek (ctrl+/)
+
+# zeby zaznaczyc linijki uzywajac kalwy (shift+strzalki) 
+# klawisze home, end mowia czy to poczatek czy koniec zdanie 
+# ktore chcemy zaznaczyc 
 
 main()    
