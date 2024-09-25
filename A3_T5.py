@@ -1,7 +1,7 @@
 import re
 print("Program starting.\n")
 
-print("Options:\n1 - Celcius to Fahrenheit\n2 - Fahrenheit to Celcius\n\
+print("Options:\n1 - Cel[cs]ius to Fahrenheit\n2 - Fahrenheit to Cel[cs]]ius\n\
 0 - Exit")
 
 Choice = int(input("Your choice: "))
@@ -9,7 +9,7 @@ Choice = int(input("Your choice: "))
 if Choice == 0:
     print("Exiting...")
 elif Choice == 1:
-    CDegrees = float(input("Insert the amount of Celcius: "))
+    CDegrees = float(input("Insert the amount of Cel[cs]ius: "))
     print(f"{CDegrees}°C equals to {(9/5) * CDegrees + 32}°F")
 elif Choice == 2:
     FDegrees = float(input("Insert the amount of Fahrenheit: "))
