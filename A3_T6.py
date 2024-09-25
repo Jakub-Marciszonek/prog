@@ -14,14 +14,10 @@ while Choice != 0:
         if Choice == 1:
             Meters = float(input("Insert meters: "))
             print(f"{round(Meters, 1)} m is {round((Meters / 1000), 1)} km")
-            break
         elif Choice == 2:
             Km = float(input("Insert kilometers: "))
             print(f"{Km} km is {round((Km * 1000), 1)} m")
-            break
-        else:
-            print("Unknown option.")
-            break
+        break
     elif Choice == 2:
 
         print("\nWeight options:\n1 - Grams to pounds\n2 - Pounds to grams\n0 - Exit")
@@ -29,20 +25,14 @@ while Choice != 0:
         if Choice == 1:
             Grams = float(input("Insert grams: "))
             print(f"{Grams} g is {round((Grams/453.6), 4)} lb")
-            break
         elif Choice == 2:
             Pounds = float(input("Insert pounds: "))
-            print(f"{round(Pounds, 1)} lb is {round((453.59 * Pounds), 1)} g")
-            break
-        else:
-            print("Unknown option.")
-            break
-    else:
-
-        print("Unknown option.")
-        break
+            print(f"{round(Pounds, 1)} lb is {round((453.59 * Pounds), 1)} g") 
+    break
 
 if Choice == 0:
     print("Ending...")
+elif Choice >= 3:
+    print("Unknown option.")
 
 print("\nProgram ending.")
