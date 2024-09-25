@@ -5,9 +5,9 @@ Word = str(input("Insert first word: "))
 Character = str(input("Insert a character: "))
 
 if Character in Word:
-    print(f'Word "{Word}" contains chracter "{Character}"')
+    print(f'Word "{Word}" contains character "{Character}"')
 else:
-    print(f"Word \"{Word}\" doesn't contains chracter \"{Character}\"")
+    print(f"Word \"{Word}\" doesn't contain character \"{Character}\"")
 
 Word2 = str(input("Insert second word: "))
 
@@ -21,4 +21,4 @@ elif Order[0] == Word2:
 else:
     print(f"The first word \"{Word}\" is before the second word \"{Word2}\" alphabetically.")
 
-print("\nProgram ending.")
+print("Program ending.")

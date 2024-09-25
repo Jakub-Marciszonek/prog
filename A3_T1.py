@@ -8,7 +8,7 @@ if Integer1 > Integer2:
 elif Integer2 > Integer1:
     print("Second integer is greater.\n")
 else:
-    print("Integers are the same.\n")
+    print("Integers are the same\n")
 
 Sum = Integer1 + Integer2
 
@@ -23,4 +23,4 @@ if OddEven == 1:
 else:
     print("Sum is even.")
 
-print("\nProgram ending.")
+print("Program ending.")
