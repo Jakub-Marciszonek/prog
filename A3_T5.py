@@ -1,7 +1,7 @@
 import re
 print("Program starting.\n")
 
-print("Options:\n1 - Cel[cs]ius to Fahrenheit\n2 - Fahrenheit to Cel[cs]]ius\n\
+print("Options:\n1 - Cel[cs]ius to Fahrenheit\n2 - Fahrenheit to Cel[]]ius\n\
 0 - Exit")
 
 Choice = int(input("Your choice: "))
