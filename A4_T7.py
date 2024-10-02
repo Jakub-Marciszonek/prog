@@ -1,14 +1,13 @@
-print("Program starting.")
+print("Program starting.\n")
 
 Y = 0
 Number = input("Check multiplicative persistence.\nInsert an integer: ")
 
-def ListMultiply(Smth) -> int:
+def ListMultiply(Smth):
     Multiply = 1
     for j in Smth:
         Multiply *= int(j)
     return Multiply
-
 while len(str(Number)) != 1:
     X = 0
     List = []
