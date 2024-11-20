@@ -1,72 +1,83 @@
-import string
+import string 
+ABC = string.ascii_uppercase
 
-PlainLower = list(string.ascii_lowercase)
-PlainUpper = list(string.ascii_uppercase)
+def configurating():
+    Nr = 0
 
-def LookingFor(Data):
-    print("Looking for the message in the palace...")
-    # with open(f"{Data[1]}_{Data[2]}.gkg", "r") as file:
-    #     Data1 = file.readlines()
-    with open(f"A6/2_3.gkg", "r") as file:
-        Data1 = file.readlines()
+    Filename = input("Insert config(filename): ")
+    with open(Filename, "r") as file:
+        Rotors = file.read()
     
-def Gate(Data):
-    List = []
-    print("Passing the guard at the entrance.")
-    
-    for i in Data[2]:
-        if i in PlainLower:
-            Character = chr((ord(i) + 13 - 97) % 26 + 97)
-            List.append(Character)
-        elif i in PlainUpper:
-            Character = chr((ord(i) + 13 - 65) % 26 + 65)
-            List.append(Character)
-        else:
-            List.append(i)
-    Ciphered = "".join(List)
-    print(Ciphered)
-    
-def Map(Data):
-    if str(Data[0]) == "0":
-        print("Currently at home")
-    elif str(Data[0]) == "1":
-        print("Currently at Galba's palace.")
-    elif str(Data[0]) == "2":
-        print("Currently at Otho's palace.")
-    elif str(Data[0]) == "3":
-        print("Currently at Vitellius's palace.")
-    elif str(Data[0]) == "4":
-        print("Currently at Vespasian's palace.")
-    else:
-        Data[0] = "0"
-    
-    if str(Data[1]) == "0":
-        print("Travelling to home...")
-        print("Arriving to home...")
-    elif str(Data[1]) == "1":
-        print("Travelling to Galba's palace...")
-        print("...Arriving to the Galba's palace.")
-    elif str(Data[1]) == "2":
-        print("Travelling to Otho's palace...")
-        print("...Arriving to the Otho's palace.")
-    elif str(Data[1]) == "3":
-        print("Travelling to Vitellius' palace...")
-        print("...Arriving to the Vitellius' palace.")
-    elif str(Data[1]) == "4":
-        print("Travelling to Vespasian's palace...")
-        print("...Arriving to the Vespasian's palace.")
-    else:
-        Data[1] = "0"
-    
+    PlugYN = input("Insert plugs (y/n)?: ")
+
+    Rotors = Rotors.split("\n")
+    for i in Rotors:
+        Pos = i.find(":")
+        Rotors[Nr] = Rotors[Nr][Pos+1:]
+        Nr += 1
+
+    print("Enigma initialized")
+    return Rotors
+
+def ciphering(Rotors):
+    Rotor1 = Rotors[0]
+    Rotor2 = Rotors[1]
+    Rotor3 = Rotors[2]
+    Reflector = Rotors[3]
+
+    while True:
+        Row = ""
+        No1 = No2 = No3 = 0
+
+        INP = input("Insert row (empty stops): ").upper()
+
+        if INP == "":
+            return 
+        
+        for i in INP:
+            if i not in ABC:
+                Row += i
+                continue
+
+            # Rotor 1
+            Pos = (ABC.index(i) + No1) % 26
+            Letter = Rotor1[Pos]
+
+            Pos = (ABC.index(Letter) + No2) % 26
+            Letter = Rotor2[Pos]
+
+            Pos = (ABC.index(Letter) + No3) % 26
+            Letter = Rotor3[Pos]
+
+            # Reflector
+            Pos = ABC.index(Letter)
+            Letter = Reflector[Pos]
+
+            # Rotor 3 backwards
+            Pos = Rotor3.index(Letter)
+            Letter = ABC[(Pos - No3) % 26]
+
+            Pos = Rotor2.index(Letter)
+            Letter = ABC[(Pos - No2) % 26]
+
+            Pos = Rotor1.index(Letter)
+            Letter = ABC[(Pos - No1) % 26]
+
+            print(f"Character \"{i}\" illuminated as \"{Letter}\"")
+            Row += Letter
+
+            No1 = (No1 + 1) % 26
+            if No1 == 0:
+                No2 = (No2 + 1) % 26
+                if No2 == 0:
+                    No3 = (No3 + 1) % 26
+
+        print(Row)
+
 def main():
-    print("Travel starting.")
-    with open("player_progress.txt", "r") as file:
-        Data0 = file.readlines()
-    Data = Data0[1].split(";")
-
-    Map(Data)
-    Gate(Data)
-    
-    print("Travel ending.")
-
+    print("Program starting.")
+    Rotors = configurating()
+    ciphering(Rotors)
+    print("Program ending.")
+    return None
 main()

@@ -1,5 +1,3 @@
-import csv
-
 def ReadFile():
     Rows = []
     Filename = input("Insert filename: ")
@@ -7,15 +5,17 @@ def ReadFile():
         next(csvfile)
         for line in csvfile:
             line = line.strip()
+            if line == "":
+                continue
             if line:
                 Rows.append(line)
 
-    print(f"Analysing file \"{Filename}\"")
+    print(f"Reading file \"{Filename}\".")
     return Rows
 
 def Analyse(Rows):
-    Weekday_counts = {"Monday":0 , "Tuesday":0 , "Wednesday":0, \
-"Thursday":0, "Friday":0, "Saturnday":0, "Sunday":0,}
+    Weekday_counts = {"Monday": 0, "Tuesday": 0, "Wednesday": 0, \
+    "Thursday": 0, "Friday": 0, "Saturnday": 0, "Sunday": 0,}
     for row in Rows:
         columns = row.split(";")
         Weekday = columns[0]
@@ -27,9 +27,11 @@ def Analyse(Rows):
     return Results
 
 def Display(Results):
-    print("Rows per Weekday:")
+    print("Analysing timestamps.\nDisplaying results.")
+    print("### Timestamp analysis ###")
     for Weekday, count in Results:
-        print(f"{Weekday}:{count}")
+        print(f" - {Weekday} {count} stamps")
+    print("### Timestamp analysis ###")
 
 def main():
     print("Program starting.")
@@ -37,5 +39,6 @@ def main():
     Result = Analyse(Data)
     Display(Result)
     print("Program ending.")
+    return None
 
 main()
